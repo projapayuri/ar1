@@ -1,68 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
+
 </head>
+
 <body>
-    <a-scene
-        cursor="rayOrigin:mouse"
-        raycaster="objects: .clickable"
-        >
-        <a-sky
-            color="steelblue"
-        ></a-sky>
+    <a-scene embedded arjs="sourceType: webcam">
 
-        <a-plane
-            rotation="-90 0 0"
-            color="darkseagreen"
-            width="10"
-            height="10"
-        ></a-plane>
+        <a-marker preset="hiro">
+            <a-box position="0.5 0 0"  scale="0.3 0.3 0.3" color="skyblue"></a-box>
+            <a-box position="0 0 0"  scale="0.3 0.3 0.3" color="lightgreen"></a-box>
+            <a-box position="-0.5 0 0"  scale="0.3 0.3 0.3" color="pink"></a-box>
+            <a-box position="0.5 0 0.5"  scale="0.3 0.3 0.3" color="skyblue"></a-box>
+            <a-box position="0 0 0.5"  scale="0.3 0.3 0.3" color="lightgreen"></a-box>
+            <a-box position="-0.5 0 0.5"  scale="0.3 0.3 0.3" color="pink"></a-box>
+            <a-box position="0.5 0 -0.5"  scale="0.3 0.3 0.3" color="skyblue"></a-box>
+            <a-box position="0 0 -0.5"  scale="0.3 0.3 0.3" color="lightgreen"></a-box>
+            <a-box position="-0.5 0 -0.5"  scale="0.3 0.3 0.3" color="pink"></a-box>
+            </a-box>
+        </a-marker>
 
-        <a-plane
-            position="0 2 -3"
-            color="black"
-            width="2"
-            height="0.7"
-            opacity="0.5"
-        ></a-plane>
-        <a-text
-            value="HP: 30"
-            position="0 2 -3"
-            id="hpText"
-            color="white"
-            align="center"
-            scale="1.5 1.5 1.5"
-
-        ></a-text>
-        <a-box
-            position="0 0.5 -3"
-            color="skyblue"
-            id="box"
-            class="clickable"
-            animation="
-                property:rotation;
-                from: 0 0 0;
-                to: 0 360 0;
-                startEvents:spin;
-            "
-        ></a-box>
+        <a-entity camera></a-entity>
     </a-scene>
-
-    <script>
-        let hp = 30;
-        const box = document.getElementById("box");
-        const hpText = document.getElementById("hpText");
-
-        function damage(){
-            hp = hp -3;
-            hpText.setAttribute("value", "HP: " + hp);
-        }
-
-        box.addEventListener("click", damage);
-    </script>
 </body>
+
 </html>
